@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitializeOnStart: 0
   EnableTestMode: 1
-  EnableExtraLogging: 0
+  EnableExtraLogging: 1
   ChildrenMode: 0
   TestDevices:
   - 9AACAECC39C6EF1FA598CCA87F934C22
@@ -43,8 +43,6 @@ MonoBehaviour:
         Replaceable: 0
         PrepareOnExit: 0
         Percentage: 100
-    - MaxPassages: 1
-      Units:
       - NetworkName: Yandex Mobile Ads
         NetworkIndex: 1
         NetworkIdentifier: yandex
@@ -52,7 +50,7 @@ MonoBehaviour:
         InstanceName: Default
         Replaceable: 0
         PrepareOnExit: 0
-        Percentage: 100
+        Percentage: 0
   - AdvertisingType: 1
     Name: Top
     ContinueAfterEndSession: 0
@@ -73,8 +71,6 @@ MonoBehaviour:
         Replaceable: 0
         PrepareOnExit: 0
         Percentage: 100
-    - MaxPassages: 1
-      Units:
       - NetworkName: Yandex Mobile Ads
         NetworkIndex: 1
         NetworkIdentifier: yandex
@@ -82,7 +78,7 @@ MonoBehaviour:
         InstanceName: Top
         Replaceable: 0
         PrepareOnExit: 0
-        Percentage: 100
+        Percentage: 0
   InterstitialMediators:
   - AdvertisingType: 2
     Name: Default
@@ -94,7 +90,7 @@ MonoBehaviour:
     FetchStrategyType: 0
     BannerPosition: 0
     Tiers:
-    - MaxPassages: 2
+    - MaxPassages: 1
       Units:
       - NetworkName: Appodeal
         NetworkIndex: 0
@@ -104,49 +100,17 @@ MonoBehaviour:
         Replaceable: 0
         PrepareOnExit: 1
         Percentage: 100
-    - MaxPassages: 1
-      Units:
       - NetworkName: Yandex Mobile Ads
         NetworkIndex: 1
         NetworkIdentifier: yandex
         InstanceIndex: 0
         InstanceName: Default
         Replaceable: 0
-        PrepareOnExit: 0
-        Percentage: 100
+        PrepareOnExit: 1
+        Percentage: 0
   IncentivizedMediators:
   - AdvertisingType: 3
     Name: Default
-    ContinueAfterEndSession: 0
-    FetchOnAdUnitHidden: 1
-    FetchOnStart: 0
-    BannerMinDisplayTime: 30
-    DeferredFetchDelay: 90
-    FetchStrategyType: 0
-    BannerPosition: 0
-    Tiers:
-    - MaxPassages: 1
-      Units:
-      - NetworkName: Appodeal
-        NetworkIndex: 0
-        NetworkIdentifier: appodeal
-        InstanceIndex: 0
-        InstanceName: Default
-        Replaceable: 0
-        PrepareOnExit: 0
-        Percentage: 100
-    - MaxPassages: 1
-      Units:
-      - NetworkName: Yandex Mobile Ads
-        NetworkIndex: 1
-        NetworkIdentifier: yandex
-        InstanceIndex: 0
-        InstanceName: Default
-        Replaceable: 0
-        PrepareOnExit: 0
-        Percentage: 100
-  - AdvertisingType: 3
-    Name: Game Over
     ContinueAfterEndSession: 0
     FetchOnAdUnitHidden: 1
     FetchOnStart: 0

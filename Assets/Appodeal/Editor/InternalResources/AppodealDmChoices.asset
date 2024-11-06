@@ -17,4 +17,72 @@ MonoBehaviour:
   checkPeriodicallyForPluginUpdates: 1
   includePluginBetaVersions: 0
   enableVerboseLogging: 0
-  lastSyncSdkStates: []
+  lastSyncSdkStates:
+  - sdkId: adjust
+    isSelected: 0
+  - sdkId: admob
+    isSelected: 0
+  - sdkId: amazon
+    isSelected: 1
+  - sdkId: applovin
+    isSelected: 1
+  - sdkId: appodeal
+    isSelected: 1
+  - sdkId: appsflyer
+    isSelected: 0
+  - sdkId: bidmachine
+    isSelected: 1
+  - sdkId: bidon
+    isSelected: 1
+  - sdkId: bigo_ads
+    isSelected: 1
+  - sdkId: chartboost
+    isSelected: 0
+  - sdkId: csj
+    isSelected: 0
+  - sdkId: dt_exchange
+    isSelected: 1
+  - sdkId: facebook_analytics
+    isSelected: 0
+  - sdkId: firebase
+    isSelected: 0
+  - sdkId: gam
+    isSelected: 0
+  - sdkId: hyprmx
+    isSelected: 0
+  - sdkId: iab
+    isSelected: 1
+  - sdkId: inmobi
+    isSelected: 1
+  - sdkId: ironsource
+    isSelected: 1
+  - sdkId: line
+    isSelected: 0
+  - sdkId: maio
+    isSelected: 0
+  - sdkId: max
+    isSelected: 1
+  - sdkId: meta_audience_network
+    isSelected: 0
+  - sdkId: mintegral
+    isSelected: 1
+  - sdkId: mobilefuse
+    isSelected: 1
+  - sdkId: my_target
+    isSelected: 0
+  - sdkId: ogury
+    isSelected: 0
+  - sdkId: pangle
+    isSelected: 1
+  - sdkId: sentry
+    isSelected: 1
+  - sdkId: tencent
+    isSelected: 0
+  - sdkId: unity_ads
+    isSelected: 1
+  - sdkId: verve
+    isSelected: 0
+  - sdkId: vungle
+    isSelected: 1
+  - sdkId: yandex_ads
+    isSelected: 0

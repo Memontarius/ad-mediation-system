@@ -55,9 +55,9 @@ MonoBehaviour:
     _bannerType: 0
     _bannerRefreshTime: 0
   _useAppOpenAd: 1
-  _androidAppOpenAdUnitId: R-M-2098103-5
+  _androidAppOpenAdUnitId: demo-appopenad-yandex
   _iOSAppOpenAdUnitId: 
   _selfControlImpressionAppOpenAd: 1
-  _appOpenAdShowingFrequency: 2
-  _appOpenAdDisplayCooldown: 90
+  _appOpenAdShowingFrequency: 1
+  _appOpenAdDisplayCooldown: 3
   _appOpenAdLoadAttemptMaxNumber: 2

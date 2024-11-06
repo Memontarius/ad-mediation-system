@@ -312,9 +312,11 @@ namespace Virterix.AdMediation
                 switch (adType)
                 {
                     case AdType.Interstitial:
+                        SharedFullscreenAdWillShow = true;
                         Appodeal.Show(AppodealShowStyle.Interstitial);
                         break;
                     case AdType.Incentivized:
+                        SharedFullscreenAdWillShow = true;
                         Appodeal.Show(AppodealShowStyle.RewardedVideo);
                         break;
                     case AdType.Banner:
@@ -528,6 +530,7 @@ namespace Virterix.AdMediation
             Debug.Log("[AMS] AppodealAdapter Interstitial show failed");
 #endif
             m_interstitialInstance.State = AdState.Unavailable;
+            SharedFullscreenAdWillShow = false;
         }
 
         // Called when interstitial is shown
@@ -536,6 +539,7 @@ namespace Virterix.AdMediation
 #if AD_MEDIATION_DEBUG_MODE
             Debug.Log("[AMS] AppodealAdapter Interstitial shown");
 #endif
+            SharedFullscreenAdWillShow = false;
             AddEvent(m_interstitialInstance.m_adType, AdEvent.Showing, m_interstitialInstance);
         }
 
@@ -545,6 +549,7 @@ namespace Virterix.AdMediation
 #if AD_MEDIATION_DEBUG_MODE
             Debug.Log("[AMS] AppodealAdapter Interstitial closed");
 #endif
+            SharedFullscreenAdWillShow = false;
             AddEvent(m_interstitialInstance.m_adType, AdEvent.Hiding, m_interstitialInstance);
         }
 
@@ -598,6 +603,7 @@ namespace Virterix.AdMediation
             Debug.Log("[AMS] AppodealAdapter RewardedVideo show failed");
 #endif
             m_incentivizedInstance.State = AdState.Unavailable;
+            SharedFullscreenAdWillShow = false;
         }
 
         // Called when rewarded video is shown
@@ -606,6 +612,7 @@ namespace Virterix.AdMediation
 #if AD_MEDIATION_DEBUG_MODE
             Debug.Log("[AMS] AppodealAdapter RewardedVideo shown");
 #endif
+            SharedFullscreenAdWillShow = false;
             AddEvent(m_incentivizedInstance.m_adType, AdEvent.Showing, m_incentivizedInstance);
         }
 
@@ -623,6 +630,7 @@ namespace Virterix.AdMediation
 #if AD_MEDIATION_DEBUG_MODE
             Debug.Log("[AMS] AppodealAdapter RewardedVideo closed");
 #endif
+            SharedFullscreenAdWillShow = false;
             AddEvent(m_incentivizedInstance.m_adType, AdEvent.Hiding, m_incentivizedInstance);
         }
 

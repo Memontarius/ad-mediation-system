@@ -306,6 +306,10 @@ namespace Virterix.AdMediation
 
                     AddEvent(adInstance.m_adType, AdEvent.Showing, adInstance);
                 }
+                else if (AdMediationSystem.IsAdFullscreen(adType))
+                {
+                    SharedFullscreenAdWillShow = true;
+                }
 
                 return true;
             }
@@ -623,7 +627,11 @@ namespace Virterix.AdMediation
 
         private void HandleAppStateChanged(object sender, AppStateChangedEventArgs args)
         {
-            if (SharedInterstitialAdShowing)
+#if AD_MEDIATION_DEBUG_MODE
+            Debug.Log($"[AMS] YandexMobileAds HandleAppStateChanged. SharedFullscreenAdWillShow:{SharedFullscreenAdWillShow}");
+#endif
+            
+            if (SharedFullscreenAdWillShow)
             {
                 return;
             }
@@ -632,6 +640,10 @@ namespace Virterix.AdMediation
             {
                 m_appStateForegroundCount++;
 
+#if AD_MEDIATION_DEBUG_MODE
+                Debug.Log($"[AMS] YandexMobileAds HandleAppStateChanged. m_appStateForegroundCount:{m_appStateForegroundCount}");
+#endif
+                
                 if (Time.realtimeSinceStartup - m_appOpenAdLastAttemptToShowTime > m_appOpenAdDisplayCooldown &&
                     (m_appOpenAdShowingFrequency <= 1 ||
                      (m_appStateForegroundCount - 1) % m_appOpenAdShowingFrequency == 0))
@@ -756,6 +768,12 @@ namespace Virterix.AdMediation
             Debug.Log($"[AMS] YandexMobileAds Closed. {adInstance.m_adType}");
 #endif
             DestroyYandexAd(adInstance);
+
+            if (AdMediationSystem.IsAdFullscreen(adInstance.m_adType))
+            {
+                SharedFullscreenAdWillShow = false;
+            }
+            
             AddEvent(adInstance.m_adType, AdEvent.Hiding, adInstance);
         }
 

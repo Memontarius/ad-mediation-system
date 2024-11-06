@@ -468,11 +468,13 @@ namespace Virterix.AdMediation
                             AddEvent(adInstance.m_adType, AdEvent.Showing, adInstance);
                         break;
                     case AdType.Interstitial:
+                        SharedFullscreenAdWillShow = true;
                         InterstitialAd interstitial = adInstance.m_adView as InterstitialAd;
                         interstitial?.Show();
                         break;
                     case AdType.Incentivized:
                         RewardedAd rewardedAd = adInstance.m_adView as RewardedAd;
+                        SharedFullscreenAdWillShow = true;
                         rewardedAd?.Show((Reward reward) =>
                         {
                             HandleRewardVideoEarned(adMobAdInstance, reward);
@@ -788,6 +790,11 @@ namespace Virterix.AdMediation
                     break;
                 case AdEvent.PreparationFailed:
                 case AdEvent.Hiding:
+                    if (AdMediationSystem.IsAdFullscreen(adInstance.m_adType))
+                    {
+                        SharedFullscreenAdWillShow = false;
+                    }
+
                     DestroyInterstitial((AdMobAdInstanceData)adInstance);
                     break;
             }
@@ -802,6 +809,11 @@ namespace Virterix.AdMediation
                     break;
                 case AdEvent.PreparationFailed:
                 case AdEvent.Hiding:
+                    if (AdMediationSystem.IsAdFullscreen(adInstance.m_adType))
+                    {
+                        SharedFullscreenAdWillShow = false;
+                    }
+
                     DestroyRewardVideo((AdMobAdInstanceData)adInstance);
                     break;
             }
@@ -820,7 +832,7 @@ namespace Virterix.AdMediation
 
         private void OnAppStateChanged(AppState appState)
         {
-            if (AppOpenAdDisabled || !enabled || !HasAppOpenAdManager || SharedFullscreenAdShowing) {
+            if (AppOpenAdDisabled || !enabled || !HasAppOpenAdManager || SharedFullscreenAdShowing || SharedFullscreenAdWillShow) {
                 return;
             }
 

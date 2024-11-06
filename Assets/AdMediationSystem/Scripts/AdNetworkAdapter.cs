@@ -191,7 +191,7 @@ namespace Virterix.AdMediation
         private static AdNetworkAdapter s_lastShowingFullscreenNetwork;
 
         public static bool SharedFullscreenAdShowing { get; protected set; }
-        public static bool SharedInterstitialAdShowing { get; protected set; }
+        public static bool SharedFullscreenAdWillShow { get; protected set; }
         private static float s_waitResponseHandlingInterval;
         private WaitForSeconds _waitResponseIntervalInstruction;
         private readonly WaitForSecondsRealtime _updateEventsIntervalInstruction = new WaitForSecondsRealtime(0.2f);
@@ -346,23 +346,17 @@ namespace Virterix.AdMediation
                     SharedFullscreenAdShowing = true;
                     s_lastShowingFullscreenAdInstance = adInstance;
                     s_lastShowingFullscreenNetwork = this;
-                    if (adType == AdType.Interstitial)
-                    {
-                        SharedInterstitialAdShowing = true;
-                    }
                 }
                 else if (adEvent == AdEvent.Hiding)
                 {
                     SharedFullscreenAdShowing = false;
-                    if (adType == AdType.Interstitial)
-                    {
-                        SharedInterstitialAdShowing = false;
-                    }
                 }
             }
 
             if (instant)
+            {
                 NotifyEvent(adEvent, adInstance);
+            }
             else
             {
                 EventParam eventParam = new EventParam();
